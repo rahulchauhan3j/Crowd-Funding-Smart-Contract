@@ -23,7 +23,7 @@ Funds take the form of a custom ERC20 token - create your own token for an added
 Each crowdfunded project should have a funding goal
 When a funding goal is not met, customers can get a refund of their pledged funds
 
-## Teachnical Overview
+## Technical Overview
 
 contracts/CrowdFunding.sol is the solidity contract which in upgradeable. It allows creation of crowd funding campaigns. Project Owners create
 campaigns and Users with ERC20 tokens can fund those campaigns. Once funding goals are achived by campaigns then Project Owners can withdraw ERC20 tokens funded
