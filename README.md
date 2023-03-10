@@ -1,4 +1,4 @@
-# Sample Hardhat Project
+# Crowd Funding Smart Contract
 
 ## Background
 
