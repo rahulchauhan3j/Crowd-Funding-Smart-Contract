@@ -11,6 +11,7 @@ const { assert, expect } = require("chai")
 const {
   TOKEN_NAME,
   TOKEN_SYMBOL,
+  TOKEN_DECIMALS,
   PROJECT_NAME,
   FUNDING_GOAL,
   START_TIME,
@@ -29,7 +30,7 @@ describe("Test Crowd Funding Contract", function () {
       deployer
     )
 
-    const args = [TOKEN_NAME, TOKEN_SYMBOL]
+    const args = [TOKEN_NAME, TOKEN_SYMBOL, TOKEN_DECIMALS]
     const crowdFunding = await upgrades.deployProxy(crowdFundingContract, args)
     await crowdFunding.deployed()
 
@@ -44,7 +45,7 @@ describe("Test Crowd Funding Contract", function () {
       deployer
     )
 
-    const args = [TOKEN_NAME, TOKEN_SYMBOL]
+    const args = [TOKEN_NAME, TOKEN_SYMBOL, TOKEN_DECIMALS]
     const crowdFunding = await upgrades.deployProxy(crowdFundingContract, args)
     await crowdFunding.deployed()
 
@@ -81,7 +82,7 @@ describe("Test Crowd Funding Contract", function () {
       deployer
     )
 
-    const args = [TOKEN_NAME, TOKEN_SYMBOL]
+    const args = [TOKEN_NAME, TOKEN_SYMBOL, TOKEN_DECIMALS]
     const crowdFunding = await upgrades.deployProxy(crowdFundingContract, args)
     await crowdFunding.deployed()
 
@@ -146,6 +147,15 @@ describe("Test Crowd Funding Contract", function () {
 
       const owner = await crowdFunding.owner()
       assert.equal(owner, deployer)
+    })
+
+    it("Decimals of Contract is correctly set", async function () {
+      const { deployer, user, user2, user3, crowdFunding } = await loadFixture(
+        deployCrowdFundingFixture
+      )
+
+      const decimals = await crowdFunding.decimals()
+      assert.equal(decimals, TOKEN_DECIMALS)
     })
   })
 

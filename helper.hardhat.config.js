@@ -1,5 +1,6 @@
 const TOKEN_NAME = "Company Tokens"
 const TOKEN_SYMBOL = "CTK1"
+const TOKEN_DECIMALS = 3
 
 const PROJECT_NAME = "Project A"
 const FUNDING_GOAL = 2000
@@ -16,6 +17,7 @@ const GOAL_STATUS = {
 module.exports = {
   TOKEN_NAME,
   TOKEN_SYMBOL,
+  TOKEN_DECIMALS,
   PROJECT_NAME,
   FUNDING_GOAL,
   START_TIME,

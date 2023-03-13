@@ -11,6 +11,7 @@ const { assert, expect } = require("chai")
 const {
   TOKEN_NAME,
   TOKEN_SYMBOL,
+  TOKEN_DECIMALS,
   PROJECT_NAME,
   FUNDING_GOAL,
   START_TIME,
@@ -28,6 +29,7 @@ describe("Test Upgraded Crowd Funding", function () {
     const CrowdFunding = await upgrades.deployProxy(CrowdFundingContract, [
       TOKEN_NAME,
       TOKEN_SYMBOL,
+      TOKEN_DECIMALS,
     ])
     await CrowdFunding.deployed()
 

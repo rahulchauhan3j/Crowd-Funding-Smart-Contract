@@ -43,6 +43,9 @@ contract CrowdFunding is Initializable, ERC20Upgradeable, OwnableUpgradeable {
   /// Keeps track of how much each crowdfunding project is funded by the user.
   mapping(address => mapping(uint256 => uint256)) userFunds;
 
+  /// decimals in ERC20 tokens
+  uint8 decimalsERC20;
+
   /**** EVENTS */
 
   /// Event emitted when a project owner is added.
@@ -82,12 +85,24 @@ contract CrowdFunding is Initializable, ERC20Upgradeable, OwnableUpgradeable {
 
   function initialize(
     string calldata _tokenName,
-    string calldata _tokenSymbol
+    string calldata _tokenSymbol,
+    uint8 _decimals
   ) public initializer {
     __ERC20_init(_tokenName, _tokenSymbol);
     __Ownable_init();
+    decimalsERC20 = _decimals;
   }
 
+  /// Function to return decimal values in ERC 20 tokens.
+  /// This function overrides the parent implementation which
+  /// always returns 18 as decimals
+  function decimals() public view override returns (uint8) {
+    return decimalsERC20;
+  }
+
+  /// Function to Mint ERC 20
+  /// @param to (address to whom tokens are to be minted)
+  /// @param amount (amount of tokens to be minted)
   function mint(address to, uint256 amount) public virtual onlyOwner {
     _mint(to, amount);
   }

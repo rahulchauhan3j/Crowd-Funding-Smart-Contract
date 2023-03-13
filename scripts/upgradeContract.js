@@ -9,6 +9,7 @@ const { getNamedAccounts } = hre
 const {
   TOKEN_NAME,
   TOKEN_SYMBOL,
+  TOKEN_DECIMALS,
   PROJECT_NAME,
   FUNDING_GOAL,
   START_TIME,
@@ -27,6 +28,7 @@ async function main() {
   const crowdFunding = await upgrades.deployProxy(crowdFundingContract, [
     TOKEN_NAME,
     TOKEN_SYMBOL,
+    TOKEN_DECIMALS,
   ])
   await crowdFunding.deployed()
   console.log(`Crowd Funding Contract Deployed at ${crowdFunding.address}`)
