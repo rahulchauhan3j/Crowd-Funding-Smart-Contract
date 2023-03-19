@@ -170,6 +170,10 @@ contract CrowdFunding is Initializable, ERC20Upgradeable, OwnableUpgradeable {
         owner() == msg.sender,
       "Only owner or project owner can take this action"
     );
+    require(
+      block.timestamp <= crowdFundingProjects[_index].endTime,
+      "Crowd Funding Campaign has ended"
+    );
 
     crowdFundingProjects[_index].goalStatus = goal.cancelled;
 
